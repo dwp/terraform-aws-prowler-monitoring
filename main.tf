@@ -42,6 +42,17 @@ module "metric_filter_alarm_3_4" {
   alarm_action_arns = "${var.alarm_action_arns}"
 }
 
+module "metric_filter_alarm_acm_pca_certgen" {
+  source  = "dwp/metric-filter-alarm/aws"
+  version = "1.1.1"
+
+  log_group_name = "${var.log_group_name}"
+  metric_namespace = "${var.metric_namespace}"
+  pattern = "{ $.requestParameters.policyDocument="*\"Action\": \"acm-pca:IssueCertificate\"*" }"
+  alarm_name = "ACM-PCA Certificate Generation - sometimes also triggers Prowler Alert 3.4"
+  alarm_action_arns = "${var.alarm_action_arns}"
+}
+
 module "metric_filter_alarm_3_5" {
   source  = "dwp/metric-filter-alarm/aws"
   version = "1.1.1"
