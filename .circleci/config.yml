@@ -22,7 +22,7 @@ jobs:
 workflows:
   version: 2
   publish-release:
-    - jobs:
+    jobs:
       - publish-github-release:
           filters:
             branches:
