@@ -115,7 +115,7 @@ module "metric_filter_alarm_3_11" {
   log_group_name = "${var.log_group_name}"
   metric_namespace = "${var.metric_namespace}"
   pattern = "{ ($.eventName = CreateNetworkAcl) || ($.eventName = CreateNetworkAclEntry) || ($.eventName = DeleteNetworkAcl) || ($.eventName = DeleteNetworkAclEntry) || ($.eventName = ReplaceNetworkAclEntry) || ($.eventName = ReplaceNetworkAclAssociation) }"
-  alarm_name = "3.11 changes to Network Access Control Lists (NACL)"
+  alarm_name = "3.11 changes to Network Access Control Lists"
   alarm_action_arns = "${var.alarm_action_arns}"
 }
 
