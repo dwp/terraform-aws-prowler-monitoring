@@ -1,0 +1,12 @@
+groups:
+- name: test
+  jobs:
+  - test
+
+- name: pull-request
+  jobs:
+  - terraform-aws-prowler-monitoring-pr
+
+- name: update-pipeline
+  jobs:
+  - update-pipeline

@@ -1,0 +1,14 @@
+jobs:
+- name: test
+  plan:
+  - get: terraform-aws-prowler-monitoring
+    trigger: true
+    version: every
+  - .: (( inject meta.plan.terraform-bootstrap ))
+    input_mapping:
+      terraform-aws-prowler-monitoring: terraform-aws-prowler-monitoring
+  - task: terraform-terratest
+    .: (( inject meta.plan.terraform-terratest ))
+    input_mapping:
+      terraform-aws-prowler-monitoring: terraform-aws-prowler-monitoring
+  .: (( inject meta.plan.notify ))
