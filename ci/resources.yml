@@ -2,6 +2,16 @@ resources:
 - name: terraform-aws-prowler-monitoring
   type: git
   source:
+    branch: master
+    username: ((dataworks.concourse_github_username))
+    password: ((dataworks-secrets.concourse_github_pat))
+    uri: https://github.com/dwp/terraform-aws-prowler-monitoring.git
+  check_every: 5m
+  webhook_token: ((dataworks.concourse_github_webhook_token))
+
+- name: terraform-aws-prowler-monitoring-test
+  type: git
+  source:
     branch: test
     access_token: ((dataworks-secrets.concourse_github_pat))
     uri: https://github.com/dwp/terraform-aws-prowler-monitoring.git
