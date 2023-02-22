@@ -5,7 +5,7 @@ Terraform module that creates a collection of AWS log metric filters and alarms 
 ```hcl
 module "my_prowler_monitoring" {
   source = "dwp/prowler-monitoring/aws"
-  
+
   log_group_name = "MyLogGroup"
 }
 ```
@@ -26,7 +26,7 @@ resource "aws_sns_topic" "MyTopic" {
 
 module "my_prowler_monitoring" {
   source = "dwp/prowler-monitoring/aws"
-  
+
   log_group_name = aws_cloudwatch_log_group.MyLogGroup.name
   alarm_action_arns = [aws_sns_topic.MyTopic.arn]
 }
