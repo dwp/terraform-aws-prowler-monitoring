@@ -1,0 +1,29 @@
+jobs:
+  - name: update-pipeline
+    plan:
+      - get: terraform-aws-prowler-monitoring
+        resource: terraform-aws-prowler-monitoring-update-pipeline
+        trigger: true
+      - task: aviator
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: ((dataworks.docker_aviator_repository))
+              version: ((dataworks.docker_aviator_version))
+          run:
+            path: sh
+            args:
+              - -exc
+              - |
+                sed -i 's/fly/nofly/' aviator.yml
+                /usr/bin/aviator -f aviator.yml
+                mv aviator_pipeline.yml ../pipeline
+            dir: terraform-aws-prowler-monitoring
+          inputs:
+            - name: terraform-aws-prowler-monitoring
+          outputs:
+            - name: pipeline
+      - set_pipeline: terraform-aws-prowler-monitoring
+        file: pipeline/aviator_pipeline.yml

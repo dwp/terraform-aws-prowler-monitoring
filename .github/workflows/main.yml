@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       publish-version: ${{ steps.get-publish-version.outputs.publish-version }}
-    steps:   
+    steps:
       - name: Prepare SemVer
         id: prepare-semver
         run: |
@@ -38,13 +38,13 @@ jobs:
         with:
           semver-input: ${{ steps.prepare-semver.outputs.latest_version_out }}
           increment: ${{ steps.prepare-semver.outputs.semver_increment }}
-      
+
       - name: Get publish version
         id: get-publish-version
         run: |
           echo "publish-version=v${{ steps.semver.outputs.semver }}" >> $GITHUB_OUTPUT
-  
-  
+
+
   build-and-publish-github-release:
     runs-on: ubuntu-latest
     needs: [get-publish-version]
@@ -61,7 +61,7 @@ jobs:
             VERSION=$(echo $LATEST_VERSION | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
             VERSION_NUMBER=$(echo $VERSION | sed 's/^v\(.*\)$/\1/')
             echo ${VERSION} > VERSION
-      
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@latest
