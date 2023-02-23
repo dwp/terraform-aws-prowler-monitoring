@@ -31,3 +31,4 @@ module "my_prowler_monitoring" {
   alarm_action_arns = [aws_sns_topic.MyTopic.arn]
 }
 ```
+
