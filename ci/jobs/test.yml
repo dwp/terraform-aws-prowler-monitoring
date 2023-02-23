@@ -4,6 +4,13 @@ jobs:
   - get: terraform-aws-prowler-monitoring-test
     trigger: true
     version: every
+  - get: terraform-aws-prowler-monitoring
+    trigger: true
+    version: every
+  - put: terraform-aws-prowler-monitoring-test
+    params:
+      repository: terraform-aws-prowler-monitoring
+      merge: true
   - .: (( inject meta.plan.terraform-bootstrap ))
     input_mapping:
       terraform-aws-prowler-monitoring: terraform-aws-prowler-monitoring-test
