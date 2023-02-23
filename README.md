@@ -10,6 +10,7 @@ module "my_prowler_monitoring" {
 }
 ```
 
+
 ## Examples
 The following example creates a CloudWatch Log Group, SNS Topic and alarms to satisfy section 3 of the Prowler monitoring checks.
 If any of the alarms go into an "ALARM" state a notification will be sent to the SNS Topic.
