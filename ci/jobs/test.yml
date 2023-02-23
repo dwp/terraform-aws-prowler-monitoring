@@ -5,8 +5,6 @@ jobs:
     trigger: true
     version: every
   - get: terraform-aws-prowler-monitoring
-    trigger: true
-    version: every
   - put: terraform-aws-prowler-monitoring-test
     params:
       repository: terraform-aws-prowler-monitoring
