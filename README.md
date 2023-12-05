@@ -1,3 +1,5 @@
+# DO NOT USE THIS REPO - MIGRATED TO GITLAB
+
 # AWS Prowler monitoring Terraform module
 Terraform module that creates a collection of AWS log metric filters and alarms to satisfy section 3 of the [Prowler Monitoring](https://github.com/toniblyx/prowler) checks. This modules uses the [AWS metric filter alarm](https://registry.terraform.io/modules/dwp/metric-filter-alarm/aws) Terraform module.
 
